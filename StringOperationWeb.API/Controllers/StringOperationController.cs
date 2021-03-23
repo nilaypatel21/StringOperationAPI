@@ -32,14 +32,14 @@ namespace StringOperationWeb.API.Controllers
         /// </response>
         /// <remarks>
         /// Sample Request:
-        /// GET /api/StringOperation/hasAlphabates?inputString=abcdefghijklmnopqrstuvwxy!@#$%$###Z
+        /// GET /api/StringOperation/hasAllLettersOfAlphabet?inputString=abcdefghijklmnopqrstuvwxy!@#$%$###Z
         /// </remarks>
         [HttpGet]
-        [Route("hasAlphabates")]
+        [Route("hasAllLettersOfAlphabet")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [Produces("application/json")]
-        public IActionResult HasAlphabates(string inputString)
+        public IActionResult HasAllLettersOfAlphabet(string inputString)
         {
             var serviceResponse = stringOperationService.HasAllLettersOfAlphabet(inputString);
 
