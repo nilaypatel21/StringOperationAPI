@@ -35,6 +35,7 @@ namespace StringOperationWeb.API
                 c.IncludeXmlComments(xmlPath);
             });
 
+            //Register all business service using extention method created in Project.Core
             services.RegisterBusinessServices();
         }
 

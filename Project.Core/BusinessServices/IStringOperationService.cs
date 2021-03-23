@@ -8,6 +8,6 @@ namespace Project.Core.BusinessServices
 {
     public interface IStringOperationService
     {
-        StringOperationServiceResponse HasAlphabets(string inputString);
+        StringOperationServiceResponse HasAllLettersOfAlphabet(string inputString);
     }
 }

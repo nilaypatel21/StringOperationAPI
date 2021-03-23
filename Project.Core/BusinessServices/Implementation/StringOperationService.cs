@@ -1,12 +1,19 @@
 ﻿using Project.Core.ViewModels;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Project.Core.BusinessServices.Implementation
 {
     public class StringOperationService : IStringOperationService
     {
-        public StringOperationServiceResponse HasAlphabets(string inputString)
+        /// <summary>
+        /// Check if input string has atleast one of each letter of the alphabet
+        /// </summary>
+        /// <param name="inputString"></param>
+        /// <returns>Return response of type StringOperationServiceResponse. 
+        /// If string is empty will return error message with IsValidationFailed to true 
+        /// otherwise ValidationMessage will be empty but Response will be set to true/false
+        /// </returns>
+        public StringOperationServiceResponse HasAllLettersOfAlphabet(string inputString)
         {
             var response = new StringOperationServiceResponse();
 
@@ -18,9 +25,12 @@ namespace Project.Core.BusinessServices.Implementation
                 return response;
             }
 
-            var alphabateCount = Regex.Matches(inputString, @"[a-zA-Z]").Count();
+            var alphabateCount = inputString.ToLower()
+                .Where(c => System.Char.IsLetter(c))
+                .GroupBy(c => c)
+                .Count();
 
-            response.Response =  alphabateCount > 0;
+            response.Response = alphabateCount == 26;
 
             return response;
         }

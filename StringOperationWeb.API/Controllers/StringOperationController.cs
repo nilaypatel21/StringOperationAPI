@@ -21,14 +21,18 @@ namespace StringOperationWeb.API.Controllers
         }
 
         /// <summary>
-        /// Validate if specified string has atleast one alphabate letter.
+        /// Validate if specified string has atleast one letter of each alphabate.
         /// </summary>
         /// <param name="inputString">Enter any string</param> 
-        /// <response code="204">If string is not specifed then api will return HTTP Status Code : 204 (No content)</response>
-        /// <response code="200">If string is specified then api will validate string and return true/false with HTTP Status Code : 200 (OK)</response>
+        /// <response code="204">If string is not specifed then api will return 
+        /// HTTP Status Code : 204 (No content)
+        /// </response>
+        /// <response code="200">If string is specified then api will validate string 
+        /// and return true/false with HTTP Status Code : 200 (OK)
+        /// </response>
         /// <remarks>
         /// Sample Request:
-        /// GET /api/StringOperation/hasAlphabates?inputString=A12!@
+        /// GET /api/StringOperation/hasAlphabates?inputString=abcdefghijklmnopqrstuvwxy!@#$%$###Z
         /// </remarks>
         [HttpGet]
         [Route("hasAlphabates")]
@@ -37,7 +41,7 @@ namespace StringOperationWeb.API.Controllers
         [Produces("application/json")]
         public IActionResult HasAlphabates(string inputString)
         {
-            var serviceResponse = stringOperationService.HasAlphabets(inputString);
+            var serviceResponse = stringOperationService.HasAllLettersOfAlphabet(inputString);
 
             if (serviceResponse.IsValidationFailed)
             {
